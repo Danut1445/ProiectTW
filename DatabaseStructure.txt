@@ -1,0 +1,26 @@
+﻿User:
+-> Name (String)
+-> Password (String)
+-> Email (String)
+-> Role (Collection: Admin, Personnel, Clien)
+
+FoodStockpile:
+-> Grains (Int)
+-> Meat (Int)
+-> FishFood (Int)
+-> Plants (Int)
+-> Fish (Int)
+-> UserID (Primary Key, used for One-to-One with user)
+
+Animals:
+-> ID (Primary Key)
+-> UserID (Foreign Key used for Many-to-One relation)
+-> Name (String)
+-> Happiness (Int: 0-100)
+-> Hunger (Int: 0-100)
+-> Specie (String, Foreign Key for Many-to-One relation)
+
+AnimalSpecies:
+-> Specie (Primary Key)
+-> Info (String)
+-> Food (String)
