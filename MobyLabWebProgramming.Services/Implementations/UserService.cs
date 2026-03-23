@@ -89,6 +89,21 @@ public class UserService(IRepository<WebAppDatabaseContext> repository, ILoginSe
             Password = user.Password
         }, cancellationToken); // A new entity is created and persisted in the database.
 
+        if (user.Role == UserRoleEnum.Client)
+        {
+            var addedUser = await repository.GetAsync(new UserSpec(user.Email), cancellationToken);
+
+            await repository.AddAsync(new FoodStockpile
+            {
+                UserId = addedUser!.Id,
+                Grains = 100,
+                Fish = 100,
+                FishFood = 100,
+                Meats = 100,
+                Plants = 100
+            }, cancellationToken);
+        }
+
         await mailService.SendMail(user.Email, "Welcome!", MailTemplates.UserAddTemplate(user.Name), true, "My App", cancellationToken); // You can send a notification on the user email. Change the email if you want.
 
         return ServiceResponse.ForSuccess();

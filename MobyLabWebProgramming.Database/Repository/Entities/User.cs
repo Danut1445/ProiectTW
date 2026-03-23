@@ -23,4 +23,6 @@ public class User : BaseEntity
     public FoodStockpile FoodStockpile { get; set; } = null!;
 
     public ICollection<Animal> Animals { get; set; } = null!;
+
+    public ICollection<Order> Orders { get; set; } = null!;
 }

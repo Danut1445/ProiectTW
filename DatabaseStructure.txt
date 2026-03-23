@@ -24,3 +24,20 @@ AnimalSpecies:
 -> Specie (Primary Key)
 -> Info (String)
 -> Food (String)
+
+ShopItems:
+-> ID (Primary Key)
+-> Name (String)
+-> Price (Double)
+-> Description (String)
+
+Orders:
+-> ID (Primary Key)
+-> UserID (Foreign Key for Many-to-One relation)
+-> TotalPaid (Double)
+
+OrderItems:
+-> OrdersID (Foreign Key for Many-to-One relation)
+-> ItemID (Foreign Key for Many-to-One relation)
+-> Number (Int)
+Composite Key from OrdersID + ItemID
