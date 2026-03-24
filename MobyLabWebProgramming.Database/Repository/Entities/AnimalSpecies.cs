@@ -1,8 +1,9 @@
 ﻿using MobyLabWebProgramming.Database.Repository.Enums;
+using MobyLabWebProgramming.Infrastructure.BaseObjects;
 
 namespace MobyLabWebProgramming.Database.Repository.Entities;
 
-public class AnimalSpecies
+public class AnimalSpecies : BaseEntity
 {
     public string Specie { get; set; } = null!;
     public string Description { get; set; } = null!;

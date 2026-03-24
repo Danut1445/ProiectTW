@@ -14,6 +14,8 @@ public class AnimalSpeciesConfiguration : IEntityTypeConfiguration<AnimalSpecies
             .HasMaxLength(255)
             .IsRequired();
         builder.HasKey(e => e.Specie);
+        builder.Property(e => e.Specie).IsRequired();
+        builder.HasAlternateKey(e => e.Id);
         builder.Property(e => e.Specie)
             .HasMaxLength(4096)
             .IsRequired();
