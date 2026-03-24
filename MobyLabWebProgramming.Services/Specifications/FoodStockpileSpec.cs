@@ -5,5 +5,5 @@ namespace MobyLabWebProgramming.Services.Specifications;
 
 public class FoodStockpileSpec : Specification<FoodStockpile>
 {
-    public FoodStockpileSpec(Guid id) => Query.Where(e => e.Id == id);
+    public FoodStockpileSpec(Guid id) => Query.Where(e => e.UserId == id);
 }

@@ -18,5 +18,5 @@ public class FoodStockpileProjectionSpec : Specification<FoodStockpile, FoodStoc
                 Grains = e.Grains
             });
 
-    public FoodStockpileProjectionSpec(Guid id) : this() => Query.Where(e => e.Id == id);
+    public FoodStockpileProjectionSpec(Guid id) : this() => Query.Where(e => e.UserId == id);
 }
