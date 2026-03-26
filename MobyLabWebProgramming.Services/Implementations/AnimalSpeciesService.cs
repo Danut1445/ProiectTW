@@ -52,12 +52,12 @@ public class AnimalSpeciesService(IRepository<WebAppDatabaseContext> repository)
             return ServiceResponse.FromError(new(HttpStatusCode.NotFound, "The specie dose not exist!", ErrorCodes.EntityNotFound));
         }
         
-        await repository.DeleteAsync<User>(result.Id, cancellationToken);
+        await repository.DeleteAsync<AnimalSpecies>(result.Id, cancellationToken);
 
         return ServiceResponse.ForSuccess();
     }
 
-    public async Task<ServiceResponse<AnimalSpeciesRecord>> GetSpecies(string species,
+    public async Task<ServiceResponse<AnimalSpeciesRecord>> GetSpecie(string species,
         CancellationToken cancellationToken = default)
     {
         var result = await repository.GetAsync(new AnimalSpeciesProjectionSpec(species), cancellationToken);
@@ -67,6 +67,19 @@ public class AnimalSpeciesService(IRepository<WebAppDatabaseContext> repository)
             ServiceResponse.FromError<AnimalSpeciesRecord>(new(HttpStatusCode.NotFound, "The specie dose not exist!", ErrorCodes.EntityNotFound)); // Pack the result or error into a ServiceResponse
     }
 
+    public async Task<ServiceResponse<int>> GetSpeciesCount(CancellationToken cancellationToken = default)
+    {
+        return ServiceResponse.ForSuccess(await repository.GetCountAsync<AnimalSpecies>(cancellationToken));    
+    }
+
+    public async Task<ServiceResponse<PagedResponse<AnimalSpeciesRecord>>> GetSpecies(PaginationSearchQueryParams pagination,
+        CancellationToken cancellationToken = default)
+    {
+        var result = await repository.PageAsync(pagination, new AnimalSpeciesProjectionSpec(pagination.Search, false), cancellationToken); // Use the specification and pagination API to get only some entities from the database.
+
+        return ServiceResponse.ForSuccess(result);
+    }
+    
     public async Task<ServiceResponse> UpdateSpecies(AnimalSpeciesUpdateRecord animalSpeciesUpdateRecord, UserRecord? requestingUser = null,
         CancellationToken cancellationToken = default)
     {

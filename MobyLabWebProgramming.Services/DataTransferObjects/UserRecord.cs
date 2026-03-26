@@ -12,4 +12,6 @@ public class UserRecord
     public string Name { get; set; } = null!;
     public string Email { get; set; } = null!;
     public UserRoleEnum Role { get; set; }
+    public int NumberAnimals { get; set; }
+    public int NumberOrders {get; set; }
 }

@@ -48,7 +48,8 @@ public static class WebApplicationBuilderExtensions
                 .AddScoped<IUserFileService, UserFileService>()
                 .AddScoped<IMailService, MailService>()
                 .AddScoped<IFoodStockpileService, FoodStockpileService>()
-                .AddScoped<IAnimalSpeciesService, AnimalSpeciesService>();
+                .AddScoped<IAnimalSpeciesService, AnimalSpeciesService>()
+                .AddScoped<IAnimalService, AnimalServices>();
 
             return builder;
         }

@@ -20,8 +20,30 @@ public class AnimalSpeciesController(ILogger<UserController> logger, IUserServic
         var currentUser = await GetCurrentUser();
         
         return currentUser.Result != null ? 
-            FromServiceResponse(await animalSpeciesService.GetSpecies(specie)) : 
+            FromServiceResponse(await animalSpeciesService.GetSpecie(specie)) : 
             ErrorMessageResult<AnimalSpeciesRecord>(currentUser.Error);
+    }
+    
+    [Authorize]
+    [HttpGet]
+    public async Task<ActionResult<RequestResponse<PagedResponse<AnimalSpeciesRecord>>>> GetSpecies([FromQuery] PaginationSearchQueryParams pagination)
+    {
+        var currentUser = await GetCurrentUser();
+        
+        return currentUser.Result != null ? 
+            FromServiceResponse(await animalSpeciesService.GetSpecies(pagination)) : 
+            ErrorMessageResult<PagedResponse<AnimalSpeciesRecord>>(currentUser.Error);
+    }
+    
+    [Authorize]
+    [HttpGet]
+    public async Task<ActionResult<RequestResponse<int>>> GetSpeciesCount()
+    {
+        var currentUser = await GetCurrentUser();
+        
+        return currentUser.Result != null ? 
+            FromServiceResponse(await animalSpeciesService.GetSpeciesCount()) : 
+            ErrorMessageResult<int>(currentUser.Error);
     }
 
     [Authorize]
