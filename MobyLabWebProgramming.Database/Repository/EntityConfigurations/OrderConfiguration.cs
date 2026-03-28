@@ -19,6 +19,8 @@ public class OrderConfiguration : IEntityTypeConfiguration<Order>
             .IsRequired();
         builder.Property(e => e.UpdatedAt)
             .IsRequired();
+        builder.Property(e => e.OrderStatus)
+            .IsRequired();
         
         // Many-to-one relation with User
         builder.Property(e => e.UserId)
