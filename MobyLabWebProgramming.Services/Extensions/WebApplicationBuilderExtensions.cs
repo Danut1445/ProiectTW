@@ -50,7 +50,8 @@ public static class WebApplicationBuilderExtensions
                 .AddScoped<IFoodStockpileService, FoodStockpileService>()
                 .AddScoped<IAnimalSpeciesService, AnimalSpeciesService>()
                 .AddScoped<IAnimalService, AnimalServices>()
-                .AddScoped<IOrderService, OrderServices>();
+                .AddScoped<IOrderService, OrderServices>()
+                .AddScoped<IShopItemService, ShopItemServices>();
 
             return builder;
         }

@@ -23,8 +23,8 @@ public sealed class UserProjectionSpec : Specification<User, UserRecord>
                 Email = e.Email,
                 Name = e.Name,
                 Role = e.Role,
-                NumberAnimals = e.Animals.Count,
-                NumberOrders = e.Orders.Count
+                NumberAnimals = e.Animals == null! ? 0 : e.Animals.Count,
+                NumberOrders = e.Orders == null! ? 0 : e.Orders.Count
             });
 
     public UserProjectionSpec(Guid id) : this() => Query.Where(e => e.Id == id); // This constructor will call the first declared constructor with the default parameter. 
