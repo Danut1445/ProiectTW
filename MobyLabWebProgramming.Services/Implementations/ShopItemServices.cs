@@ -73,7 +73,7 @@ public class ShopItemServices(IRepository<WebAppDatabaseContext> repository) : I
 
     public async Task<ServiceResponse<PagedResponse<ShopItemRecord>>> GetShopItems(PaginationSearchQueryParams pagination, CancellationToken cancellationToken = default)
     {
-        var result = await repository.PageAsync(pagination, new ShopItemProjectionSpec(), cancellationToken); // Use the specification and pagination API to get only some entities from the database.
+        var result = await repository.PageAsync(pagination, new ShopItemProjectionSpec(pagination.Search), cancellationToken); // Use the specification and pagination API to get only some entities from the database.
 
         return ServiceResponse.ForSuccess(result);
     }

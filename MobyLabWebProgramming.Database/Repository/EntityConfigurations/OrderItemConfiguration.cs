@@ -12,6 +12,8 @@ public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>
     {
         builder.Property(e => e.OrderId)
             .IsRequired();
+        builder.Property(e => e.Id).IsRequired();
+        builder.HasAlternateKey(e => e.Id);
         builder.Property(e => e.ItemId)
             .IsRequired();
         builder.HasKey(e => new { e.OrderId, e.ItemId });

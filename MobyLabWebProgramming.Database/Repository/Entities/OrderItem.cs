@@ -1,6 +1,8 @@
-﻿namespace MobyLabWebProgramming.Database.Repository.Entities;
+﻿using MobyLabWebProgramming.Infrastructure.BaseObjects;
 
-public class OrderItem
+namespace MobyLabWebProgramming.Database.Repository.Entities;
+
+public class OrderItem : BaseEntity
 {
     public Order Order { get; set; } = null!;
     public Guid OrderId { get; set; }

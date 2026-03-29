@@ -9,5 +9,5 @@ public class OrderRecord
     public Guid UserId { get; set; }
     public double TotalPrice { get; set; }
     public OrderStatusEnum OrderStatus { get; set; }
-    public IEnumerable<OrderItem> OrderItems { get; set; } = null!;
+    public int NumberOfOrderItems { get; set; }
 }

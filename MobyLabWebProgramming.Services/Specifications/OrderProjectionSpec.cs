@@ -18,7 +18,7 @@ public class OrderProjectionSpec : Specification<Order, OrderRecord>
                 UserId = e.UserId,
                 TotalPrice = e.TotalPaid,
                 OrderStatus = e.OrderStatus,
-                OrderItems = e.OrderItems
+                NumberOfOrderItems = e.OrderItems.Count
             });
 
     public OrderProjectionSpec(Guid id) : this() => Query.Where(e => e.Id == id); // This constructor will call the first declared constructor with the default parameter. 
