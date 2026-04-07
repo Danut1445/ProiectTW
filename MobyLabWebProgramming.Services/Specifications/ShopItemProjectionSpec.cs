@@ -15,6 +15,7 @@ public class ShopItemProjectionSpec : Specification<ShopItem, ShopItemRecord>
                 Description = e.Description,
                 Name = e.Name,
                 Price = e.Price,
+                NumberOfUses = e.OrderItems == null! ? 0 : e.OrderItems.Count
             });
     
     public ShopItemProjectionSpec(Guid id) : this() => Query.Where(e => e.Id == id);
